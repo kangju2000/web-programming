@@ -8,7 +8,11 @@
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="basic.css">
   <title>Tool</title>
-
+  <script>
+    function changeIframe(name) {
+      document.getElementById("main_frame").src = name;
+    }
+  </script>
 </head>
 
 <body>
@@ -19,36 +23,14 @@
   <div class="contents">
     <nav id="side_nav">
       <h3>메뉴</h3>
-      <p>To Do List</p>
-      <p>Calculator</p>
-      <p>memo</p>
+      <p style="cursor: pointer;" onclick="changeIframe('toDoList.html')">To Do List</p>
+      <p style="cursor: pointer;" onclick="changeIframe('calculator.html')">Calculator</p>
     </nav>
     <section>
-      <div class="d-center to-do-list">
-        <h2>To Do List</h2>
-        <form class="input-form">
-          <input type="text" class="text-input" placeholder="할 일을 입력하세요">
-          <button type="submit" id="input_btn">입력</button>
-        </form>
-        <table class="list-table" border="1">
-          <colgroup>
-            <col width="90%">
-            <col width="10%">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>할 일</th>
-              <th>체크</th>
-            </tr>
-          </thead>
-          <tbody class="list-body">
-          </tbody>
-        </table>
-      </div>
+      <iframe id="main_frame" src="/toDoList.html"></iframe>
     </section>
   </div>
   <footer></footer>
-  <script src="main.js"></script>
 </body>
 
 </html>
