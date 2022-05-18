@@ -24,6 +24,7 @@ function saveList(toDo) {
 function showList(list) {
   const div = document.createElement('div');
   const input = document.createElement('input');
+  const modInput = document.createElement('input');
   const label = document.createElement('label');
   const modifyBtn = document.createElement('button');
   const deleteBtn = document.createElement('button');
@@ -41,9 +42,22 @@ function showList(list) {
 
   deleteBtn.style.display = "none";
   modifyBtn.style.display = "none";
-
+  modInput.style.display = "none";
+  modInput.value = list.toDo;
+  modInput.setAttribute('class', 'mod-input');
   modifyBtn.setAttribute('class', 'mod-btn');
-  modifyBtn.onclick = function (e) { };
+  modifyBtn.onclick = function (e) {
+    if (modInput.style.display == "none") {
+      modInput.style.display = "block";
+      label.innerHTML = "";
+    }
+    else {
+      modInput.style.display = "none";
+      label.innerHTML = modInput.value;
+      list.toDo = modInput.value;
+      localStorage.setItem('toDoList', JSON.stringify(toDoList));
+    }
+  };
   modifyBtn.innerHTML = '수정';
 
   deleteBtn.setAttribute('class', 'del-btn');
@@ -72,6 +86,7 @@ function showList(list) {
   }
 
   div.appendChild(input);
+  div.appendChild(modInput);
   div.appendChild(label);
   div.appendChild(modifyBtn);
   div.appendChild(deleteBtn);
