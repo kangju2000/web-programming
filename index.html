@@ -5,31 +5,49 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="basic.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="index.css">
   <title>Tool</title>
   <script>
-    function changeIframe(name) {
-      document.getElementById("main_frame").src = name;
+    let isNavOpened = false;
+    function navClose() {
+      document.getElementById("side_nav").style.transform = "translateX(-130px)";
+      isNavOpened = false;
+    }
+    function navToggle() {
+      if (isNavOpened == false) {
+        document.getElementById("side_nav").style.transform = "translateX(0px)";
+        isNavOpened = true;
+      }
+      else {
+        navClose();
+      }
     }
   </script>
 </head>
 
 <body>
   <header>
-    <button type="button" class="menu-btn">메뉴</button>
-    <h1>Tool</h1>
+    <button type="button" class="menu-btn" onclick="navToggle()">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <h1>
+      <a href="page/LandingPage/landingPage.html" target="main-frame" onclick="navClose()">Tool</a>
+    </h1>
   </header>
+
   <div class="contents">
     <nav id="side_nav">
-      <h3>메뉴</h3>
-      <p style="cursor: pointer;" onclick="changeIframe('toDoList.html')">To Do List</p>
-      <p style="cursor: pointer;" onclick="changeIframe('calculator.html')">Calculator</p>
+      <a href="page/ToDoList/toDoList.html" target="main-frame" onclick="navClose()">To Do List</a>
+      <a href="page/Calculator/calculator.html" target="main-frame" onclick="navClose()">Calculator</a>
+      <a href="page/Calculator/calculator.html" target="main-frame" onclick="navClose()">Canvas</a>
     </nav>
     <section>
-      <iframe id="main_frame" src="/toDoList.html"></iframe>
+      <iframe id="frame" name="main-frame" src="page/landingPage/landingPage.html" />
     </section>
   </div>
+
   <footer></footer>
 </body>
 

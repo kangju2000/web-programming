@@ -23,59 +23,68 @@ function saveList(toDo) {
 // 화면에 리스트 띄우는 함수
 function showList(list) {
   const div = document.createElement('div');
-  const input = document.createElement('input');
+  const checkBox = document.createElement('input');
   const modInput = document.createElement('input');
   const label = document.createElement('label');
   const modifyBtn = document.createElement('button');
   const deleteBtn = document.createElement('button');
-  div.setAttribute('class', 'list-div');
-  div.setAttribute('id', list.id);
 
-  input.setAttribute('type', 'checkbox');
-  input.setAttribute('class', 'chk-btn');
-  input.setAttribute('id', 'chk' + list.id);
-  input.checked = list.checked;
-  input.onclick = function (e) {
+  //체크박스 속성 추가
+  checkBox.setAttribute('type', 'checkbox');
+  checkBox.setAttribute('class', 'chk-btn');
+  checkBox.setAttribute('id', 'chk' + list.id);
+  checkBox.checked = list.checked;
+  checkBox.onclick = (e) => {
     list.checked = e.target.checked;
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
   };
 
-  deleteBtn.style.display = "none";
+  // 수정 버튼, 수정 인풋 속성 추가
+  modifyBtn.innerHTML = '수정';
   modifyBtn.style.display = "none";
   modInput.style.display = "none";
   modInput.value = list.toDo;
   modInput.setAttribute('class', 'mod-input');
   modifyBtn.setAttribute('class', 'mod-btn');
-  modifyBtn.onclick = function (e) {
+  modifyBtn.onclick = (e) => {
     if (modInput.style.display == "none") {
       modInput.style.display = "block";
       label.innerHTML = "";
     }
     else {
+      if (modInput.value == "") {
+        return alert("할 일을 입력해주세요!");
+      }
       modInput.style.display = "none";
       label.innerHTML = modInput.value;
       list.toDo = modInput.value;
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     }
   };
-  modifyBtn.innerHTML = '수정';
 
+  // 삭제 버튼 속성 추가
+  deleteBtn.innerHTML = '삭제';
+  deleteBtn.style.display = "none";
   deleteBtn.setAttribute('class', 'del-btn');
-  deleteBtn.onclick = function deleteList(e) {
+  deleteBtn.onclick = (e) => {
     if (!confirm('삭제하시겠습니까?')) return;
-
     const t_list = e.target.parentNode;
     const id = t_list.getAttribute('id');
+
     for (let i = 0; i < toDoList.length; i++) {
       if (toDoList[i].id == id) toDoList.splice(i, 1);
     }
-    localStorage.setItem('toDoList', JSON.stringify(toDoList));
     listBody.removeChild(t_list);
+    localStorage.setItem('toDoList', JSON.stringify(toDoList));
   }
 
-  deleteBtn.innerHTML = '삭제';
+  // 라벨 속성 추가
   label.innerHTML = list.toDo;
   label.setAttribute('for', 'chk' + list.id);
+  
+  // div 속성 추가
+  div.setAttribute('class', 'list-div');
+  div.setAttribute('id', list.id);
   div.onmouseover = function () {
     deleteBtn.style.display = "block";
     modifyBtn.style.display = "block";
@@ -85,11 +94,7 @@ function showList(list) {
     modifyBtn.style.display = "none";
   }
 
-  div.appendChild(input);
-  div.appendChild(modInput);
-  div.appendChild(label);
-  div.appendChild(modifyBtn);
-  div.appendChild(deleteBtn);
+  div.append(checkBox, modInput, label, modifyBtn, deleteBtn);
   listBody.appendChild(div);
 }
 
@@ -99,20 +104,17 @@ function createList(e) {
   const toDo = listInput.value;
 
   if (toDo == "") {
-    alert("할 일을 입력해주세요!");
+    return alert("할 일을 입력해주세요!");
   }
-  else {
 
-    saveList(toDo);
-    listInput.value = "";
-  }
+  saveList(toDo);
+  listInput.value = "";
 }
 
 // 리스트를 로컬스토리지에서 받아오는 함수
 function getList() {
   const getData = localStorage.getItem('toDoList');
-
-  if (getData != null && getData != []) {
+  if (getData != undefined && getData != "[]") {
     const lists = JSON.parse(getData);
     for (let i = 0; i < lists.length; i++) {
       const list = lists[i];
@@ -120,7 +122,7 @@ function getList() {
       showList(list);
     };
   }
-  else {
+  else { // 데이터 비어있을 때 count = 0
     localStorage.setItem('count', 0);
   }
 }
@@ -129,5 +131,3 @@ function init() {
   getList();
   listForm.addEventListener("submit", createList);
 }
-
-init();

@@ -5,36 +5,22 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../global.css">
   <link rel="stylesheet" href="toDoList.css">
-  <link rel="stylesheet" href="basic.css">
   <title>To Do List</title>
 </head>
 
-<body>
+<body onload="init()">
   <div class="d-center to-do-list">
     <h2 class="t-center">To Do List</h2>
     <form class="input-form">
       <input type="text" class="text-input" placeholder="할 일을 입력하세요">
       <button type="submit" id="input_btn">입력</button>
     </form>
-    <!-- <table class="list-table" border="1">
-      <colgroup>
-        <col width="90%">
-        <col width="10%">
-      </colgroup>
-      <thead>
-        <tr>
-          <th>할 일</th>
-          <th>체크</th>
-        </tr>
-      </thead>
-      <tbody class="list-body">
-      </tbody>
-    </table> -->
     <div class="list-body">
     </div>
   </div>
-  <script src="main.js"></script>
+  <script src="toDoList.js"></script>
 </body>
 
 </html>
