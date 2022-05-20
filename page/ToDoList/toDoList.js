@@ -1,6 +1,8 @@
 const listInput = document.querySelector(".text-input");
 const listForm = document.querySelector(".input-form");
 const listBody = document.querySelector(".list-body");
+const listComplete = document.getElementById('incomplete')
+const listIncomplete = document.getElementById('complete')
 
 let toDoList = [];
 
@@ -36,7 +38,14 @@ function showList(list) {
   checkBox.checked = list.checked;
   checkBox.onclick = (e) => {
     list.checked = e.target.checked;
+    if (list.checked) {
+      label.style.color = '#D3D3D3';
+    }
+    else {
+      label.style.color = 'black';
+    }
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
+    completeCount();
   };
 
   // 수정 버튼, 수정 인풋 속성 추가
@@ -45,7 +54,7 @@ function showList(list) {
   modInput.style.display = "none";
   modInput.value = list.toDo;
   modInput.setAttribute('class', 'mod-input');
-  modifyBtn.setAttribute('class', 'mod-btn');
+  modifyBtn.setAttribute('id', 'mod-btn');
   modifyBtn.onclick = (e) => {
     if (modInput.style.display == "none") {
       modInput.style.display = "block";
@@ -61,11 +70,10 @@ function showList(list) {
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     }
   };
-
   // 삭제 버튼 속성 추가
   deleteBtn.innerHTML = '삭제';
   deleteBtn.style.display = "none";
-  deleteBtn.setAttribute('class', 'del-btn');
+  deleteBtn.setAttribute('id', 'del-btn');
   deleteBtn.onclick = (e) => {
     if (!confirm('삭제하시겠습니까?')) return;
     const t_list = e.target.parentNode;
@@ -76,12 +84,13 @@ function showList(list) {
     }
     listBody.removeChild(t_list);
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
+    completeCount();
   }
 
   // 라벨 속성 추가
   label.innerHTML = list.toDo;
   label.setAttribute('for', 'chk' + list.id);
-  
+
   // div 속성 추가
   div.setAttribute('class', 'list-div');
   div.setAttribute('id', list.id);
@@ -98,6 +107,34 @@ function showList(list) {
   listBody.appendChild(div);
 }
 
+// 할일 전체 삭제 함수
+function allDeleteList() {
+  if (!confirm('전체 삭제하시겠습니까?')) return;
+  toDoList = [];
+  while (listBody.hasChildNodes()) {
+    listBody.removeChild(listBody.firstChild);
+  }
+  localStorage.setItem('toDoList', JSON.stringify(toDoList));
+  localStorage.setItem('count', 0);
+  completeCount();
+}
+
+// 미완료, 완료 개수 띄우는 함수
+function completeCount() {
+  let a = 0;
+  let b = 0;
+  for (let i = 0; i < toDoList.length; i++) {
+    if (toDoList[i].checked == true) {
+      a++;
+    }
+    else {
+      b++;
+    }
+  }
+  listIncomplete.innerHTML = a;
+  listComplete.innerHTML = b;
+}
+
 // 리스트 추가 함수
 function createList(e) {
   e.preventDefault();
@@ -108,6 +145,7 @@ function createList(e) {
   }
 
   saveList(toDo);
+  completeCount();
   listInput.value = "";
 }
 
@@ -129,5 +167,6 @@ function getList() {
 
 function init() {
   getList();
+  completeCount();
   listForm.addEventListener("submit", createList);
 }

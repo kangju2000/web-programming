@@ -23,6 +23,10 @@ a:visited {
   color: inherit;
 }
 
+button {
+  cursor: pointer;
+  outline: none;
+}
 
 body,
 input,
@@ -36,4 +40,12 @@ button {
 
 .d-center {
   margin: 0 auto;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.mb-0 {
+  margin-bottom: 0;
 }

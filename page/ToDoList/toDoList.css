@@ -7,7 +7,12 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-y: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 td {
@@ -19,6 +24,16 @@ td {
   text-align: center;
 }
 
+.to-do-complete {
+  display: flex;
+  float: right;
+  font-size: 14px;
+}
+
+.to-do-complete>p {
+  margin-right: 10px;
+}
+
 .input-form {
   display: flex;
   width: 100%;
@@ -28,23 +43,10 @@ td {
 .text-input {
   width: 90%;
   padding: 10px;
-  border: 1px solid lightgrey;
+  border: 1px solid #D3D3D3;
   border-right: 0px;
   border-radius: 5px 0px 0px 5px;
   outline: none;
-}
-
-/* .list-table {
-  border-spacing: 0px;
-  border-collapse: collapse;
-  border: 1px solid grey;
-  width: 100%;
-
-} */
-
-.list-body {
-  width: 100%;
-
 }
 
 .list-div {
@@ -54,25 +56,24 @@ td {
   margin-bottom: 10px;
   padding-left: 40px;
   padding-right: 10px;
-  background-color: lightblue;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
+  border-bottom: 1px solid #D3D3D3;
   align-items: center;
   text-align: left;
+  word-break: break-all;
 }
 
 .list-div>label {
+  width: 100%;
   padding: 10px;
   font-size: 17px;
 }
 
 .chk-btn {
   position: absolute;
-  display: inline-block;
   left: 10px;
+  display: inline-block;
   width: 20px;
   height: 20px;
-
 }
 
 .mod-input {
@@ -80,44 +81,60 @@ td {
   padding: 5px;
   margin: 5px;
   font-size: 17px;
-  border: 1px solid lightgrey;
+  border: 1px solid #D3D3D3;
   border-radius: 5px;
   outline: none;
   z-index: 5;
 }
 
-.mod-btn {
+#mod-btn {
   position: absolute;
   right: 70px;
-  padding: 5px 10px;
-  border: 1px solid lightgrey;
+  padding: 7px 12px;
+  border: none;
   border-radius: 5px;
-  background-color: green;
+  background-color: #3CB371;
   color: white;
   z-index: 5;
-  cursor: pointer;
 }
 
-.del-btn {
+#mod-btn:hover {
+  background-color: #2E8B57;
+}
+
+#del-btn {
   position: absolute;
   right: 10px;
   margin-right: 5px;
-  padding: 5px 10px;
-  border: 1px solid lightgrey;
+  padding: 7px 12px;
+  border: none;
   border-radius: 5px;
-  background-color: red;
+  background-color: #FFB6C1;
   color: white;
   z-index: 5;
-  cursor: pointer;
+
+}
+
+#del-btn:hover {
+  background-color: #DB7093;
+}
+
+#allDelete_btn {
+  float: left;
+  margin-top: 15px;
+  border: none;
+  background-color: #fff;
+  text-decoration: underline;
+
 }
 
 #input_btn {
   width: 10%;
-  border: 1px solid lightgrey;
+  border: 1px solid #D3D3D3;
   border-radius: 0px 5px 5px 0px;
-  cursor: pointer;
+  font-size: 14px;
 }
 
 #input_btn:hover {
-  background-color: aliceblue;
+  background-color: #D3D3D3;
 }

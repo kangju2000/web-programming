@@ -12,12 +12,12 @@
   <script>
     let isNavOpened = false;
     function navClose() {
-      document.getElementById("side_nav").style.transform = "translateX(-130px)";
+      document.getElementById("side_bar").style.transform = "translateY(-150px)";
       isNavOpened = false;
     }
     function navToggle() {
       if (isNavOpened == false) {
-        document.getElementById("side_nav").style.transform = "translateX(0px)";
+        document.getElementById("side_bar").style.transform = "translateY(0px)";
         isNavOpened = true;
       }
       else {
@@ -38,13 +38,12 @@
   </header>
 
   <div class="contents">
-    <nav id="side_nav">
-      <a href="page/ToDoList/toDoList.html" target="main-frame" onclick="navClose()">To Do List</a>
-      <a href="page/Calculator/calculator.html" target="main-frame" onclick="navClose()">Calculator</a>
-      <a href="page/Calculator/calculator.html" target="main-frame" onclick="navClose()">Canvas</a>
-    </nav>
+    <aside id="side_bar">
+      <a href="page/ToDoList/toDoList.html" target="main-frame" onclick="navClose()">투두 리스트</a>
+      <a href="https://board-app-with-react.herokuapp.com/" target="_blank" onclick="navClose()">게시판</a>
+    </aside>
     <section>
-      <iframe id="frame" name="main-frame" src="page/landingPage/landingPage.html" />
+      <iframe id="frame" name="main-frame" src="page/landingPage/landingPage.html"></iframe>
     </section>
   </div>
 

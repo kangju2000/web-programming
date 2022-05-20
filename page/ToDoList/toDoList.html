@@ -11,13 +11,19 @@
 </head>
 
 <body onload="init()">
-  <div class="d-center to-do-list">
-    <h2 class="t-center">To Do List</h2>
+  <div class="to-do-list d-center">
+    <h2 class="t-center mb-0">To Do List</h2>
+    <button type="button" id="allDelete_btn" onclick="allDeleteList()">전체 삭제</button>
+    <div class="to-do-complete">
+      <p>미완료: <span id="incomplete">0</span></p>
+      <p>완료: <span id="complete">0</span></p>
+    </div>
+    <div style="clear: both;"></div>
     <form class="input-form">
       <input type="text" class="text-input" placeholder="할 일을 입력하세요">
       <button type="submit" id="input_btn">입력</button>
     </form>
-    <div class="list-body">
+    <div class="list-body w-100">
     </div>
   </div>
   <script src="toDoList.js"></script>
