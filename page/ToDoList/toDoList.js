@@ -66,6 +66,7 @@ function showList(list) {
       }
       modInput.style.display = "none";
       label.innerHTML = modInput.value;
+      label.style.color = 'inherit';
       list.toDo = modInput.value;
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     }
