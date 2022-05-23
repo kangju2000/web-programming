@@ -54,7 +54,7 @@ iframe {
   position: absolute;
   width: 130px;
   background-color: #eee;
-  transition: transform 0.5s, background-color 1.3s;
+  transition: transform 0.5s, background-color 0.3s, color 0.3s;
   transform: translateY(-150px);
   text-align: center;
   z-index: 5;

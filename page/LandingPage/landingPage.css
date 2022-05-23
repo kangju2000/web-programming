@@ -2,7 +2,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  padding: 0;
+  /* padding: 10px; */
   transition: background-color 0.3s;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -11,3 +11,22 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.slide-container {
+  width: 100vw;
+  transition: translateX 1s;
+  /* transform: translateX(-100vw); */
+}
+
+.card {
+  float: left;
+  width: 80vw;
+  /* height: 300px; */
+  border: 1px solid black;
+}
+
+.card img {
+  width: 100%;
+}
+
+#prev {}

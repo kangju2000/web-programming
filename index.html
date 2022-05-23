@@ -43,7 +43,6 @@
     </div>
   </footer>
 
-  <script src="index.js"></script>
   <script>
     const sideBar = document.getElementById("side_bar");
     let isNavOpened = false;
@@ -65,7 +64,7 @@
 
   <script>
     let isDarkMode = false;
-    
+
     function darkModeToggle(obj) {
       const frame = document.getElementById('frame');
       const header = document.getElementsByTagName('header')[0];
@@ -80,6 +79,7 @@
         frameBody.style.color = '#fff';
         header.style.backgroundColor = '#202020';
         sideBar.style.backgroundColor = '#7c7c7c';
+        sideBar.style.color = '#fff';
         obj.style.color = '#fff';
         allDeleteBtn.style.color = '#fff';
       }
@@ -91,6 +91,7 @@
         frameBody.style.color = '#000';
         header.style.backgroundColor = '#D3D3D3';
         sideBar.style.backgroundColor = '#eee';
+        sideBar.style.color = '#000';
         obj.style.color = '#000';
         allDeleteBtn.style.color = '#000';
       }
