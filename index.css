@@ -32,7 +32,7 @@ iframe {
   height: 100%;
   padding: 0px 0px;
   border: none;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .menu-btn {
@@ -50,11 +50,16 @@ iframe {
   background-color: #fff;
 }
 
+#menu_icon {
+  transition: all 0.5s;
+}
+
 #side_bar {
   position: absolute;
   width: 130px;
   background-color: #eee;
   transition: transform 0.5s, background-color 0.3s, color 0.3s;
+  transition-timing-function: ease-in-out;
   transform: translateY(-150px);
   text-align: center;
   z-index: 5;

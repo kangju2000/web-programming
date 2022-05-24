@@ -2,11 +2,11 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../global.css">
-  <link rel="stylesheet" href="landingPage.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../global.css" />
+  <link rel="stylesheet" href="landingPage.css" />
   <title>landing page</title>
 </head>
 
@@ -15,60 +15,51 @@
     <h1>해야 할 일들을 작성하세요!</h1>
     <p>TO DO LIST를 작성해서 계획을 세워봅시다.</p>
     <hr />
-    <!-- <img src="../../img/toDoList_example.png"> -->
     <h3>이용 방법</h3>
     <div class="slide-container">
-      <div class="card">
-        <img src="../../img/c1.PNG" alt="..." id="cardImg">
-        <label id="cardLabel">입력 칸에 할 일을 입력한다.</label>
+      <div class="slide-list">
+        <div class="slide-content">
+          <img src="../../img/c1.PNG" alt="...">
+          <label>입력 칸에 할 일을 입력한다.</label>
+        </div>
+        <div class="slide-content">
+          <img src="../../img/c2.PNG" alt="...">
+          <p>할 일을 끝냈으면 해당 칸을 클릭하여 완료 표시를 한다.</p>
+        </div>
+        <div class="slide-content">
+          <img src="../../img/c3.PNG" alt="...">
+          <p>수정 및 삭제는 할 일칸에 마우스를 올려 버튼을 클릭한다.</p>
+        </div>
+        <div class="slide-content">
+          <img src="../../img/c4.PNG" alt="...">
+          <p>전체 삭제는 입력 칸 위 버튼을 클릭한다.</p>
+        </div>
+        <div class="slide-content">
+          <img src="../../img/c5.PNG" alt="...">
+          <p>미완료된 할 일과 완료된 할 일이 우측 상단에 표기된다.</p>
+        </div>
       </div>
-      <!-- <div class="card">
-        <img src="../../img/c2.PNG" alt="...">
-        <p>할 일을 끝냈으면 해당 칸을 클릭하여 완료 표시를 한다.</p>
-      </div>
-      <div class="card">
-        <img src="../../img/c3.PNG" alt="...">
-        <p>수정 및 삭제는 할 일칸에 마우스를 올려 버튼을 클릭한다.</p>
-      </div>
-      <div class="card">
-        <img src="../../img/c4.PNG" alt="...">
-        <p>전체 삭제는 입력 칸 위 버튼을 클릭한다.</p>
-      </div>
-      <div class="card">
-        <img src="../../img/c5.PNG" alt="...">
-        <p>미완료된 할 일과 완료된 할 일이 우측 상단에 표기된다.</p>
-      </div> -->
     </div>
     <span style="clear: both;"></span>
     <button type="button" id="prev" onclick="prevImg()">&lt;</button>
     <button type="button" id="next" onclick="nextImg()">&gt;</button>
   </div>
   <script>
-    const card = document.querySelector('.card');
-    const cardImg = document.getElementById('cardImg');
-    const cardLabel = document.getElementById('cardLabel');
-    let img_text = [
-      '입력 칸에 할 일을 입력한다.',
-      '할 일을 끝냈으면 해당 칸을 클릭하여 완료 표시를 한다.',
-      '수정 및 삭제는 할 일칸에 마우스를 올려 버튼을 클릭한다.',
-      '전체 삭제는 입력 칸 위 버튼을 클릭한다.',
-      '미완료된 할 일과 완료된 할 일이 우측 상단에 표기된다.'
-    ]
-    let num = 1;
+    const slideList = document.querySelector('.slide-list');
+    const slideContents = document.querySelectorAll('.slide-content');
+    let cnt = 0;
+
     function prevImg() {
-      if (num > 1) {
-        num -= 1;
-        cardImg.src = `../../img/c${num}.PNG`;
-        cardLabel.innerHTML = img_text[num - 1];
-      }
+      if (cnt <= 0) return;
+      cnt -= 1;
+      slideList.style.transform = `translateX(${cnt * (-300)}px)`;
     }
 
     function nextImg() {
-      if (num < 5) {
-        num += 1;
-        cardImg.src = `../../img/c${num}.PNG`;
-        cardLabel.innerHTML = img_text[num - 1];
-      }
+      if (cnt >= slideContents.length - 1) return;
+
+      cnt += 1;
+      slideList.style.transform = `translateX(${cnt * (-300)}px)`;
     }
   </script>
 </body>

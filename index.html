@@ -14,7 +14,7 @@
 <body>
   <header>
     <button type="button" class="menu-btn" onclick="navToggle()">
-      <i class="fa-solid fa-bars"></i>
+      <i id="menu_icon" class="fa-solid fa-bars"></i>
     </button>
     <h1>
       <a href="page/LandingPage/landingPage.html" target="main-frame" onclick="navClose()">TO DO LIST</a>
@@ -45,15 +45,18 @@
 
   <script>
     const sideBar = document.getElementById("side_bar");
+    const menuIcon = document.getElementById("menu_icon");
     let isNavOpened = false;
 
     function navClose() {
       sideBar.style.transform = "translateY(-150px)";
+      menuIcon.style.transform = "rotate(0deg)";
       isNavOpened = false;
     }
     function navToggle() {
       if (isNavOpened == false) {
         sideBar.style.transform = "translateY(0px)";
+        menuIcon.style.transform = "rotate(90deg)";
         isNavOpened = true;
       }
       else {
