@@ -36,13 +36,17 @@ function showList(list) {
   checkBox.setAttribute('class', 'chk-btn');
   checkBox.setAttribute('id', 'chk' + list.id);
   checkBox.checked = list.checked;
+  if (list.checked) { // 체크되있으면 회색으로 처리
+    label.style.color = '#D3D3D3';
+  }
+
   checkBox.onclick = (e) => {
     list.checked = e.target.checked;
     if (list.checked) {
       label.style.color = '#D3D3D3';
     }
     else {
-      label.style.color = 'black';
+      label.style.color = 'inherit';
     }
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
     completeCount();
@@ -55,7 +59,7 @@ function showList(list) {
   modInput.value = list.toDo;
   modInput.setAttribute('class', 'mod-input');
   modifyBtn.setAttribute('id', 'mod-btn');
-  modifyBtn.onclick = (e) => {
+  modifyBtn.onclick = () => {
     if (modInput.style.display == "none") {
       modInput.style.display = "block";
       label.innerHTML = "";
@@ -71,6 +75,7 @@ function showList(list) {
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     }
   };
+
   // 삭제 버튼 속성 추가
   deleteBtn.innerHTML = '삭제';
   deleteBtn.style.display = "none";
