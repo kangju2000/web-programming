@@ -16,33 +16,34 @@
     <h1>해야 할 일들을 작성하세요!</h1>
     <p>TO DO LIST를 작성해서 계획을 세워봅시다.</p>
     <hr />
-    <h3>이용 방법</h3>
+    <h2>📜이용 방법</h2>
+    <br />
     <div class="slide-container d-center">
       <div class="slide-list">
         <div class="slide-content">
           <img src="../../img/ex1.PNG" alt="...">
           <hr>
-          <p>입력 칸에 할 일을 입력한다.</p>
+          <p><b>할 일 추가</b>는 입력 칸에 할 일을 입력합니다.</p>
         </div>
         <div class="slide-content">
           <img src="../../img/ex2.PNG" alt="...">
           <hr>
-          <p>수정 및 삭제는 할 일칸에 마우스를 올려 버튼을 클릭한다.</p>
+          <p><b>수정 및 삭제</b>는 할 일칸에 마우스를 올려 버튼을 클릭합니다.</p>
         </div>
         <div class="slide-content">
           <img src="../../img/ex3.PNG" alt="...">
           <hr>
-          <p>할 일을 끝냈으면 해당 칸을 클릭하여 완료 표시를 한다.</p>
+          <p><b>할 일 완료</b>는 해당 칸을 클릭하여 완료 표시를 합니다.</p>
         </div>
         <div class="slide-content">
           <img src="../../img/ex4.PNG" alt="...">
           <hr>
-          <p>전체 삭제는 입력 칸 위 버튼을 클릭한다.</p>
+          <p><b>전체 삭제</b>는 입력 칸 위 버튼을 클릭합니다.</p>
         </div>
         <div class="slide-content">
           <img src="../../img/ex5.PNG" alt="...">
           <hr>
-          <p>미완료된 할 일과 완료된 할 일이 우측 상단에 표기된다.</p>
+          <p><b>미완료된 할 일</b>과 <b>완료된 할 일</b>이 우측 상단에 표기됩니다.</p>
         </div>
       </div>
       <button type="button" id="prev" onclick="prevImg()"><i class="fa-solid fa-angle-left"></i></button>
@@ -56,8 +57,7 @@
     let cnt = 0;
 
     function prevImg() {
-      if (cnt <= 0){
-        
+      if (cnt <= 0) {
         return;
       }
       cnt -= 1;
@@ -65,8 +65,9 @@
     }
 
     function nextImg() {
-      if (cnt >= slideContents.length - 1) return;
-
+      if (cnt >= slideContents.length - 1) {
+        return;
+      }
       cnt += 1;
       slideList.style.transform = `translateX(${cnt * (-700)}px)`;
     }
