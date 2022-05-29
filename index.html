@@ -69,34 +69,15 @@
     let isDarkMode = false;
 
     function darkModeToggle(obj) {
-      const frame = document.getElementById('frame');
-      const header = document.getElementsByTagName('header')[0];
-      const frameBody = frame.contentWindow.document.querySelector('body');
-      const allDeleteBtn = frame.contentWindow.document.getElementById('allDelete_btn');
-
       if (isDarkMode == false) {
         obj.innerHTML = '<i class="fa-solid fa-toggle-on"></i>';
+        document.body.style.filter = 'invert(80%)';
         isDarkMode = true;
-
-        frameBody.style.backgroundColor = '#121212';
-        frameBody.style.color = '#fff';
-        header.style.backgroundColor = '#202020';
-        sideBar.style.backgroundColor = '#7c7c7c';
-        sideBar.style.color = '#fff';
-        obj.style.color = '#fff';
-        allDeleteBtn.style.color = '#fff';
       }
       else {
         obj.innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
+        document.body.style.filter = 'invert(0%)';
         isDarkMode = false;
-
-        frameBody.style.backgroundColor = '#fff';
-        frameBody.style.color = '#000';
-        header.style.backgroundColor = '#D3D3D3';
-        sideBar.style.backgroundColor = '#eee';
-        sideBar.style.color = '#000';
-        obj.style.color = '#000';
-        allDeleteBtn.style.color = '#000';
       }
     }
   </script>

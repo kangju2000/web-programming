@@ -1,6 +1,7 @@
 body {
   height: 100vh;
   padding-top: 60px;
+  transition: filter 0.3s ease-in-out;
 }
 
 header {
@@ -18,7 +19,6 @@ header {
   background-color: #D3D3D3;
   color: #fff;
   z-index: 999;
-  transition: background-color 0.3s;
 }
 
 section {
@@ -32,7 +32,6 @@ iframe {
   height: 100%;
   padding: 0px 0px;
   border: none;
-  transition: background-color 0.3s ease-in-out;
 }
 
 .menu-btn {
@@ -58,8 +57,7 @@ iframe {
   position: absolute;
   width: 130px;
   background-color: #eee;
-  transition: transform 0.5s, background-color 0.3s, color 0.3s;
-  transition-timing-function: ease-in-out;
+  transition: transform 0.5s ease-in-out;
   transform: translateY(-150px);
   text-align: center;
   z-index: 5;
