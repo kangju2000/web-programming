@@ -6,6 +6,15 @@ const listIncomplete = document.getElementById('complete')
 
 let toDoList = [];
 
+function listChecked(list, label) {
+  if (list.checked) {
+    label.style.color = '#D3D3D3';
+  }
+  else {
+    label.style.color = 'inherit';
+  }
+}
+
 // 로컬스토리지에 저장하는 함수
 function saveList(toDo) {
   const cnt = parseInt(localStorage.getItem('count'));
@@ -36,29 +45,22 @@ function showList(list) {
   checkBox.setAttribute('class', 'chk-btn');
   checkBox.setAttribute('id', 'chk' + list.id);
   checkBox.checked = list.checked;
-  if (list.checked) { // 체크되있으면 회색으로 처리
-    label.style.color = '#D3D3D3';
-  }
+  listChecked(list, label);
 
   checkBox.onclick = (e) => {
     list.checked = e.target.checked;
-    if (list.checked) {
-      label.style.color = '#D3D3D3';
-    }
-    else {
-      label.style.color = 'inherit';
-    }
+    listChecked(list, label);
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
     completeCount();
   };
 
   // 수정 버튼, 수정 인풋 속성 추가
-  modifyBtn.innerHTML = '수정';
   modifyBtn.style.display = "none";
   modInput.style.display = "none";
   modInput.value = list.toDo;
   modInput.setAttribute('class', 'mod-input');
   modifyBtn.setAttribute('id', 'mod-btn');
+  modifyBtn.setAttribute('class', 'fa-solid fa-pen');
   modifyBtn.onclick = () => {
     if (modInput.style.display == "none") {
       modInput.style.display = "block";
@@ -72,14 +74,15 @@ function showList(list) {
       label.innerHTML = modInput.value;
       label.style.color = 'inherit';
       list.toDo = modInput.value;
+      listChecked(list, label);
       localStorage.setItem('toDoList', JSON.stringify(toDoList));
     }
   };
 
   // 삭제 버튼 속성 추가
-  deleteBtn.innerHTML = '삭제';
   deleteBtn.style.display = "none";
   deleteBtn.setAttribute('id', 'del-btn');
+  deleteBtn.setAttribute('class', 'fa-solid fa-trash');
   deleteBtn.onclick = (e) => {
     if (!confirm('삭제하시겠습니까?')) return;
     const t_list = e.target.parentNode;

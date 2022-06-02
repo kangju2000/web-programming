@@ -7,6 +7,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  padding-top: 60px;
   overflow-y: scroll;
   -ms-overflow-style: none;
 }
@@ -89,34 +90,22 @@ td {
 
 #mod-btn {
   position: absolute;
-  right: 70px;
-  padding: 7px 12px;
+  right: 50px;
   border: none;
   border-radius: 5px;
-  background-color: #3CB371;
-  color: white;
+  background-color: inherit;
+  
   z-index: 5;
-}
-
-#mod-btn:hover {
-  background-color: #2E8B57;
 }
 
 #del-btn {
   position: absolute;
   right: 10px;
-  margin-right: 5px;
-  padding: 7px 12px;
   border: none;
   border-radius: 5px;
-  background-color: #FFB6C1;
-  color: white;
+  background-color: inherit;
   z-index: 5;
 
-}
-
-#del-btn:hover {
-  background-color: #DB7093;
 }
 
 #allDelete_btn {

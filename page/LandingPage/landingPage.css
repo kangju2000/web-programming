@@ -2,12 +2,22 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+  padding-top: 60px;
   overflow-y: scroll;
   -ms-overflow-style: none;
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.main-container {
+  height:300vh;
+}
+
+.card-box {
+  margin-top: 100px;
+  height: 100vh;
 }
 
 .slide-container {

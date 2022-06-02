@@ -1,6 +1,6 @@
 body {
   height: 100vh;
-  padding-top: 60px;
+  /* padding-top: 60px; */
   transition: filter 0.3s ease-in-out;
 }
 
@@ -56,6 +56,7 @@ iframe {
 #side_bar {
   position: absolute;
   width: 130px;
+  margin-top: 60px;
   background-color: #eee;
   transition: transform 0.5s ease-in-out;
   transform: translateY(-150px);
