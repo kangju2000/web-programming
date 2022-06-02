@@ -54,11 +54,17 @@
       </div>
       <span style="clear: both;"></span>
     </div>
-    
-    <div class="card-box">
-      <h2>HOW TO MAKE</h2>
-    </div>
 
+    <div class="card-box">
+      <h1>HOW TO MAKE</h1>
+      <p>asdfasdfasdf</p>
+    </div>
+  </div>
+
+  <div class="slick-dots">
+    <span class="slickdot active" onclick="handleClick(event)" id="dot1"></span>
+    <span class="slickdot" onclick="handleClick(event)" id="dot2"></span>
+    <span class="slickdot" onclick="handleClick(event)" id="dot3"></span>
   </div>
 
   <script>
@@ -82,30 +88,62 @@
       slideList.style.transform = `translateX(${cnt * (-700)}px)`;
     }
   </script>
+
   <script>
     const box = document.getElementsByClassName('card-box');
-    box[0].style.opacity = 1;
+    const dots = document.getElementsByClassName('slickdot');
+    box[0].style.opacity = 1; // default
+
     function scrollFunc() {
-      curScroll = document.documentElement.scrollTop;
+      let curScroll = document.documentElement.scrollTop;
       console.log(curScroll);
+
       if (curScroll < 300) {
         box[0].style.opacity = 1;
         box[1].style.opacity = 0;
         box[2].style.opacity = 0;
+        dots[1].classList.remove('active');
+        dots[0].classList.add('active');
       }
       else if (curScroll < 600) {
         box[0].style.opacity = 0;
         box[1].style.opacity = 1;
         box[2].style.opacity = 0;
+        if (dots[0].classList.length == 2) {
+          dots[0].classList.remove('active');
+        }
+        else if (dots[2].classList.length == 2) {
+          dots[2].classList.remove('active');
+        }
+        dots[1].classList.add('active');
       }
-      else {
+      else if (curScroll < 900) {
         box[0].style.opacity = 0;
         box[1].style.opacity = 0;
         box[2].style.opacity = 1;
+        dots[1].classList.remove('active');
+        dots[2].classList.add('active');
       }
     }
-    // document.addEventListener('load', scrollFunc);
     document.addEventListener('scroll', scrollFunc);
+  </script>
+  <script>
+    function handleClick(event) {
+      const dot = event.target;
+      const activeDots = document.getElementsByClassName('active');
+      activeDots[0].classList.remove('active');
+      dot.classList.add('active');
+
+      if (dot.id == 'dot1') {
+        window.scrollTo(0, 0);
+      }
+      else if (dot.id == 'dot2') {
+        window.scrollTo(0, 400);
+      }
+      else if (dot.id == 'dot3') {
+        window.scrollTo(0, 800);
+      }
+    }
   </script>
 </body>
 
