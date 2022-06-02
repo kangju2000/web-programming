@@ -12,12 +12,14 @@ body {
 }
 
 .main-container {
-  height:300vh;
+  height: 1500px;
 }
 
 .card-box {
-  margin-top: 100px;
-  height: 100vh;
+  position: sticky;
+  top: 200px;
+  opacity: 0;
+  transition: all 0.3s;
 }
 
 .slide-container {

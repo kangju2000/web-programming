@@ -18,7 +18,6 @@
       <p>TO DO LIST를 작성해서 계획을 세워봅시다.</p>
     </div>
 
-    <hr />
     <div class="card-box">
       <h1>📜이용 방법</h1>
       <br />
@@ -55,11 +54,13 @@
       </div>
       <span style="clear: both;"></span>
     </div>
-    <hr />
+    
     <div class="card-box">
       <h2>HOW TO MAKE</h2>
     </div>
+
   </div>
+
   <script>
     const slideList = document.querySelector('.slide-list');
     const slideContents = document.querySelectorAll('.slide-content');
@@ -82,7 +83,29 @@
     }
   </script>
   <script>
-
+    const box = document.getElementsByClassName('card-box');
+    box[0].style.opacity = 1;
+    function scrollFunc() {
+      curScroll = document.documentElement.scrollTop;
+      console.log(curScroll);
+      if (curScroll < 300) {
+        box[0].style.opacity = 1;
+        box[1].style.opacity = 0;
+        box[2].style.opacity = 0;
+      }
+      else if (curScroll < 600) {
+        box[0].style.opacity = 0;
+        box[1].style.opacity = 1;
+        box[2].style.opacity = 0;
+      }
+      else {
+        box[0].style.opacity = 0;
+        box[1].style.opacity = 0;
+        box[2].style.opacity = 1;
+      }
+    }
+    // document.addEventListener('load', scrollFunc);
+    document.addEventListener('scroll', scrollFunc);
   </script>
 </body>
 
