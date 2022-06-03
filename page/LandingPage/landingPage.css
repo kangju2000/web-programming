@@ -17,11 +17,10 @@ body {
 
 .card-box {
   position: sticky;
-  top: 200px;
+  top: 150px;
   height: 0px;
   opacity: 0;
   transition: all 0.3s;
-  background: blue;
 }
 
 .slide-container {
@@ -54,6 +53,29 @@ body {
 
 }
 
+.how-to-make {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.how-to-make>div {
+  width: 25%;
+  height: 60vh;
+  margin: 20px;
+  padding: 10px;
+}
+
+.how-to-make ul {
+  margin: 0;
+  padding: 0;
+}
+
+.how-to-make li {
+  margin-bottom: 15px;
+  list-style: none;
+}
+
 .slick-dots {
   position: fixed;
   display: flex;
@@ -75,7 +97,7 @@ body {
 }
 
 .slickdot.active {
-  background-color: #41ABE5;
+  background-color: #444;
   box-shadow: inset 0px 0px 4px #888888;
 }
 

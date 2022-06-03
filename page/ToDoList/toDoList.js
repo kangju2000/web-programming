@@ -4,8 +4,9 @@ const listBody = document.querySelector(".list-body");
 const listComplete = document.getElementById('incomplete')
 const listIncomplete = document.getElementById('complete')
 
-let toDoList = [];
+let toDoList = []; 
 
+// 할 일 체크 확인
 function listChecked(list, label) {
   if (list.checked) {
     label.style.color = '#D3D3D3';
@@ -153,12 +154,12 @@ function createList(e) {
     return alert("할 일을 입력해주세요!");
   }
 
-  saveList(toDo);
-  completeCount();
+  saveList(toDo); // 로컬스토리지에 저장
+  completeCount(); // 완료 개수 업데이트
   listInput.value = "";
 }
 
-// 리스트를 로컬스토리지에서 받아오는 함수
+// 할 일을 로컬스토리지에서 받아오는 함수
 function getList() {
   const getData = localStorage.getItem('toDoList');
   if (getData != undefined && getData != "[]") {
@@ -175,7 +176,7 @@ function getList() {
 }
 
 function init() {
-  getList();
-  completeCount();
-  listForm.addEventListener("submit", createList);
+  getList(); // 할 일 가져오기
+  completeCount(); // 완료 개수 띄우기
+  listForm.addEventListener("submit", createList); // 추가하면 
 }

@@ -12,6 +12,7 @@
 </head>
 
 <body>
+  <!-- 상단 바 -->
   <header>
     <button type="button" class="menu-btn" onclick="navToggle()">
       <i id="menu_icon" class="fa-solid fa-bars"></i>
@@ -21,20 +22,24 @@
     </h1>
   </header>
 
+  <!-- 사이드 바 -->
+  <aside id="side_bar">
+    <a href="page/LandingPage/landingPage.html" target="main-frame" onclick="navClose()">메인 페이지</a>
+    <a href="page/ToDoList/toDoList.html" target="main-frame" onclick="navClose()">투두 리스트</a>
+    <a href="https://board-app-with-react.herokuapp.com/" target="_blank"
+      onclick="return confirm('게시판 사이트로 이동하시겠습니까?')">
+      게시판 <i class=" fa-solid fa-link"></i>
+    </a>
+  </aside>
+
+  <!-- 메인 컨텐츠 -->
   <div class="contents">
-    <aside id="side_bar">
-      <a href="page/LandingPage/landingPage.html" target="main-frame" onclick="navClose()">메인 페이지</a>
-      <a href="page/ToDoList/toDoList.html" target="main-frame" onclick="navClose()">투두 리스트</a>
-      <a href="https://board-app-with-react.herokuapp.com/" target="_blank"
-        onclick="return confirm('게시판 사이트로 이동하시겠습니까?')">
-        게시판 <i class=" fa-solid fa-link"></i>
-      </a>
-    </aside>
     <section>
       <iframe id="frame" name="main-frame" src="page/landingPage/landingPage.html"></iframe>
     </section>
   </div>
 
+  <!-- 다크 모드 -->
   <footer>
     <div id="toggle">
       <button type="button" id="dark_mode" onclick="darkModeToggle(this)">
@@ -44,6 +49,7 @@
   </footer>
 
   <script>
+    // 왼쪽 상단 사이드 바
     const sideBar = document.getElementById("side_bar");
     const menuIcon = document.getElementById("menu_icon");
     let isNavOpened = false;
@@ -66,6 +72,7 @@
   </script>
 
   <script>
+    // 다크 모드
     let isDarkMode = false;
 
     function darkModeToggle(obj) {
