@@ -4,15 +4,17 @@ const listBody = document.querySelector(".list-body");
 const listComplete = document.getElementById('incomplete')
 const listIncomplete = document.getElementById('complete')
 
-let toDoList = []; 
+let toDoList = [];
 
-// 할 일 체크 확인
+// 할 일 상태에 따라 색 변경
 function listChecked(list, label) {
   if (list.checked) {
-    label.style.color = '#D3D3D3';
+    label.style.color = 'darkgray';
+    label.style.textDecoration = 'line-through';
   }
   else {
     label.style.color = 'inherit';
+    label.style.textDecoration = 'none';
   }
 }
 
@@ -61,10 +63,11 @@ function showList(list) {
   modInput.value = list.toDo;
   modInput.setAttribute('class', 'mod-input');
   modifyBtn.setAttribute('id', 'mod-btn');
-  modifyBtn.setAttribute('class', 'fa-solid fa-pen');
+  modifyBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
   modifyBtn.onclick = () => {
     if (modInput.style.display == "none") {
       modInput.style.display = "block";
+      modifyBtn.innerHTML = '<i class="fa-solid fa-check"></i>';
       label.innerHTML = "";
     }
     else {
@@ -72,6 +75,7 @@ function showList(list) {
         return alert("할 일을 입력해주세요!");
       }
       modInput.style.display = "none";
+      modifyBtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
       label.innerHTML = modInput.value;
       label.style.color = 'inherit';
       list.toDo = modInput.value;
@@ -92,6 +96,7 @@ function showList(list) {
     for (let i = 0; i < toDoList.length; i++) {
       if (toDoList[i].id == id) toDoList.splice(i, 1);
     }
+    console.log(t_list);
     listBody.removeChild(t_list);
     localStorage.setItem('toDoList', JSON.stringify(toDoList));
     completeCount();

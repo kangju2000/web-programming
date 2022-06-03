@@ -55,6 +55,7 @@ td {
   position: relative;
   display: flex;
   min-height: 45px;
+  width: 100%;
   margin-bottom: 10px;
   padding-left: 40px;
   padding-right: 10px;
@@ -79,13 +80,14 @@ td {
 }
 
 .mod-input {
-  width: 80%;
+  width: 1000px;
   padding: 5px;
   margin: 5px;
   font-size: 17px;
-  border: 1px solid #D3D3D3;
-  border-radius: 5px;
+  border: none;
+  border-bottom: 2px solid #D3D3D3;
   outline: none;
+  overflow: visible;
   z-index: 5;
 }
 
@@ -95,7 +97,7 @@ td {
   border: none;
   border-radius: 5px;
   background-color: inherit;
-  
+
   z-index: 5;
 }
 

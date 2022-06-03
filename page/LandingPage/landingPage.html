@@ -130,7 +130,7 @@
     const box = document.getElementsByClassName('card-box');
     const dots = document.getElementsByClassName('slickdot');
     box[0].style.opacity = 1; // default
-
+    box[0].style.zIndex = "999";
     function scrollFunc() {
       let curScroll = document.documentElement.scrollTop;
       console.log(curScroll);
