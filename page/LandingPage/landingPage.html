@@ -136,16 +136,26 @@
       console.log(curScroll);
 
       if (curScroll < 400) {
-        box[0].style.opacity = 1;
-        box[1].style.opacity = 0;
-        box[2].style.opacity = 0;
+        if (box[0].style.opacity != 1) {
+          box[0].style.opacity = 1;
+          box[0].style.zIndex = "999";
+          box[1].style.opacity = 0;
+          box[1].style.zIndex = "1";
+          box[2].style.opacity = 0;
+          box[2].style.zIndex = "1";
+        }
         dots[1].classList.remove('active');
         dots[0].classList.add('active');
       }
       else if (curScroll < 800) {
-        box[0].style.opacity = 0;
-        box[1].style.opacity = 1;
-        box[2].style.opacity = 0;
+        if (box[1].style.opacity != 1) {
+          box[0].style.opacity = 0;
+          box[0].style.zIndex = "1";
+          box[1].style.opacity = 1;
+          box[1].style.zIndex = "999";
+          box[2].style.opacity = 0;
+          box[2].style.zIndex = "1";
+        }
         if (dots[0].classList.length == 2) {
           dots[0].classList.remove('active');
         }
@@ -155,9 +165,14 @@
         dots[1].classList.add('active');
       }
       else {
-        box[0].style.opacity = 0;
-        box[1].style.opacity = 0;
-        box[2].style.opacity = 1;
+        if (box[2].style.opacity != 1) {
+          box[0].style.opacity = 0;
+          box[0].style.zIndex = "1";
+          box[1].style.opacity = 0;
+          box[0].style.zIndex = "1";
+          box[2].style.opacity = 1;
+          box[0].style.zIndex = "999";
+        }
         dots[1].classList.remove('active');
         dots[2].classList.add('active');
       }
