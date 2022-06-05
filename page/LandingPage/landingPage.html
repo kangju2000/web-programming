@@ -30,34 +30,36 @@
         <div class="slide-list">
           <div class="slide-content">
             <img src="../../img/ex1.PNG" alt="방법1">
-            <hr>
             <p><b>할 일 추가</b>는 입력 칸에 할 일을 입력합니다.</p>
           </div>
           <div class="slide-content">
             <img src="../../img/ex2.PNG" alt="방법2">
-            <hr>
             <p><b>수정 및 삭제</b>는 할 일칸에 마우스를 올려 아이콘을 클릭합니다.</p>
           </div>
           <div class="slide-content">
             <img src="../../img/ex3.PNG" alt="방법3">
-            <hr>
             <p><b>할 일 완료</b>는 해당 칸을 클릭하여 완료 표시를 합니다.</p>
           </div>
           <div class="slide-content">
             <img src="../../img/ex4.PNG" alt="방법4">
-            <hr>
             <p><b>전체 삭제</b>는 입력 칸 위 버튼을 클릭합니다.</p>
           </div>
           <div class="slide-content">
             <img src="../../img/ex5.PNG" alt="방법5">
-            <hr>
             <p><b>미완료된 할 일</b>과 <b>완료된 할 일</b>이 우측 상단에 표기됩니다.</p>
           </div>
         </div>
         <button type="button" id="prev" onclick="prevImg()"><i class="fa-solid fa-angle-left"></i></button>
         <button type="button" id="next" onclick="nextImg()"><i class="fa-solid fa-angle-right"></i></button>
+        <div class="slide-dots">
+          <span class="slidedot active" onclick="handleSlide(event)" id="sDot1"></span>
+          <span class="slidedot" onclick="handleSlide(event)" id="sDot2"></span>
+          <span class="slidedot" onclick="handleSlide(event)" id="sDot3"></span>
+          <span class="slidedot" onclick="handleSlide(event)" id="sDot4"></span>
+          <span class="slidedot" onclick="handleSlide(event)" id="sDot5"></span>
+        </div>
+        <span style=" clear: both;"></span>
       </div>
-      <span style="clear: both;"></span>
     </div>
 
     <!-- 세번째 box -->
@@ -88,11 +90,6 @@
           </ul>
         </div>
       </div>
-      <!-- <ul class="how-to-make">
-        <li>jQuery, React 같은 프레임워크, 라이브러리를 쓰지 않은 순수 JavaScript로 DOM 조작</li>
-        <li>페이지 별로 폴더를 정리해서 작업하기 편하게 함</li>
-        <li>게시판은 React.js 와 Node.js의 express를 활용하여 heroku로 배포</li>
-      </ul> -->
     </div>
   </div>
 
@@ -106,53 +103,113 @@
     // 캐러셀 부분
     const slideList = document.querySelector('.slide-list');
     const slideContents = document.querySelectorAll('.slide-content');
+    const slideDots = document.getElementsByClassName('slidedot');
     let cnt = 0;
+    slideDots[0].classList.add('active');
+    // dot 스타일 변경
+    function slideDotStyle() {
+      for (let i = 0; i < slideContents.length; i++) {
+        if (i == cnt) {
+          slideDots[cnt].classList.add('active');
+        }
+        else {
+          slideDots[i].classList.remove('active');
+        }
+      }
+    }
+    // dot 클릭했을 때 이미지 변환
+    function handleSlide() {
+      const dot = event.target;
+      const activeDots = document.getElementsByClassName('active');
+      activeDots[0].classList.remove('active');
+      dot.classList.add('active');
 
+      if (dot.id == 'sDot1') {
+        cnt = 0;
+      }
+      else if (dot.id == 'sDot2') {
+        cnt = 1;
+      }
+      else if (dot.id == 'sDot3') {
+        cnt = 2;
+      }
+      else if (dot.id == 'sDot4') {
+        cnt = 3;
+      }
+      else if (dot.id == 'sDot5') {
+        cnt = 4;
+      }
+      slideList.style.transform = `translateX(${cnt * (-700)}px)`;
+    }
+
+    // 이전
     function prevImg() {
       if (cnt <= 0) {
         return;
       }
       cnt -= 1;
       slideList.style.transform = `translateX(${cnt * (-700)}px)`;
+      slideDotStyle();
     }
 
+    // 다음
     function nextImg() {
       if (cnt >= slideContents.length - 1) {
         return;
       }
       cnt += 1;
       slideList.style.transform = `translateX(${cnt * (-700)}px)`;
+      slideDotStyle();
     }
+
+
   </script>
 
   <script>
     //스크롤 부분
     const boxes = document.getElementsByClassName('card-box');
-    const dots = document.getElementsByClassName('slickdot');
-    const boxLength = boxes.length;
+    const slickDots = document.getElementsByClassName('slickdot');
 
     boxes[0].style.opacity = 1; // default
     boxes[0].style.zIndex = "999";
 
     // box와 dot 스타일 변경 함수
     function boxAndDotStyleFunc(idx) {
-      for (let i = 0; i < boxLength; i++) {
+      for (let i = 0; i < boxes.length; i++) {
         if (i == idx) {
           boxes[i].style.opacity = 1;
           boxes[i].style.zIndex = "999";
-          dots[i].classList.add('active');
+          slickDots[i].classList.add('active');
         }
         else {
           boxes[i].style.opacity = 0;
           boxes[i].style.zIndex = "1";
-          dots[i].classList.remove('active');
+          slickDots[i].classList.remove('active');
         }
       }
     }
+
+    //화면 우측 버튼 클릭 시 해당 위치로 스크롤
+    function handleClick(event) {
+      const dot = event.target;
+      const activeDots = document.getElementsByClassName('active');
+      activeDots[0].classList.remove('active');
+      dot.classList.add('active');
+
+      if (dot.id == 'dot1') {
+        window.scrollTo(0, 0);
+      }
+      else if (dot.id == 'dot2') {
+        window.scrollTo(0, 600);
+      }
+      else if (dot.id == 'dot3') {
+        window.scrollTo(0, 1000);
+      }
+    }
+
     // 스크롤 시 화면 바뀌는 함수
     function scrollFunc() {
       let curScroll = document.documentElement.scrollTop;
-      console.log(curScroll);
 
       if (curScroll < 400) {
         if (boxes[0].style.opacity != 1) {
@@ -171,25 +228,6 @@
       }
     }
     document.addEventListener('scroll', scrollFunc);
-  </script>
-  <script>
-    //화면 우측 버튼 클릭 시 해당 위치로 스크롤
-    function handleClick(event) {
-      const dot = event.target;
-      const activeDots = document.getElementsByClassName('active');
-      activeDots[0].classList.remove('active');
-      dot.classList.add('active');
-
-      if (dot.id == 'dot1') {
-        window.scrollTo(0, 0);
-      }
-      else if (dot.id == 'dot2') {
-        window.scrollTo(0, 600);
-      }
-      else if (dot.id == 'dot3') {
-        window.scrollTo(0, 1000);
-      }
-    }
   </script>
 </body>
 
