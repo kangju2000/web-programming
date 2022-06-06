@@ -26,8 +26,8 @@ body {
 .slide-container {
   position: relative;
   width: 700px;
-  height: 500px;
-  border: 3px solid #D3D3D3;
+  height: 470px;
+  border: 3px solid black;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -52,7 +52,7 @@ body {
 .slide-content img {
   width: 700px;
   height: 400px;
-  border-bottom: 3px solid #D3D3D3;
+  border-bottom: 3px solid black;
 }
 
 .slick-dots {
@@ -67,6 +67,7 @@ body {
   display: inline-block;
   height: 12px;
   width: 12px;
+  margin-top: 10px;
   margin-right: 2px;
   background-color: lightgray;
   border-radius: 50%;
@@ -81,8 +82,9 @@ body {
 
 .how-to-make {
   display: flex;
-  justify-content: center;
   margin: 0 auto;
+  justify-content: center;
+  text-align: left;
 }
 
 .how-to-make>div {
@@ -99,7 +101,7 @@ body {
 
 .how-to-make li {
   margin-bottom: 15px;
-  list-style: none;
+  /* list-style: none; */
 }
 
 .slick-dots {

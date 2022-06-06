@@ -18,6 +18,11 @@ header {
   background-color: #D3D3D3;
   color: #fff;
   z-index: 999;
+  overflow: hidden;
+}
+
+header a {
+  font-size: 100px;
 }
 
 section {

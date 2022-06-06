@@ -51,16 +51,18 @@
         </div>
         <button type="button" id="prev" onclick="prevImg()"><i class="fa-solid fa-angle-left"></i></button>
         <button type="button" id="next" onclick="nextImg()"><i class="fa-solid fa-angle-right"></i></button>
-        <div class="slide-dots">
-          <span class="slidedot active" onclick="handleSlide(event)" id="sDot1"></span>
-          <span class="slidedot" onclick="handleSlide(event)" id="sDot2"></span>
-          <span class="slidedot" onclick="handleSlide(event)" id="sDot3"></span>
-          <span class="slidedot" onclick="handleSlide(event)" id="sDot4"></span>
-          <span class="slidedot" onclick="handleSlide(event)" id="sDot5"></span>
-        </div>
+
         <span style=" clear: both;"></span>
       </div>
+      <div class="slide-dots">
+        <span class="slidedot active" onclick="handleSlide(event)" id="sDot1"></span>
+        <span class="slidedot" onclick="handleSlide(event)" id="sDot2"></span>
+        <span class="slidedot" onclick="handleSlide(event)" id="sDot3"></span>
+        <span class="slidedot" onclick="handleSlide(event)" id="sDot4"></span>
+        <span class="slidedot" onclick="handleSlide(event)" id="sDot5"></span>
+      </div>
     </div>
+
 
     <!-- 세번째 box -->
     <div class="card-box">
@@ -72,14 +74,15 @@
           <ul>
             <li>index.html에 iframe 태그를 넣어 화면 전환</li>
             <li>우측 스크롤 바 안보이게 설정</li>
-            <li>좌측 상단 사이드 바에 transform을 활용해서 애니메이션 구현</li>
             <li>우측 하단에 다크 모드 구현</li>
+            <li>좌측 상단 사이드 바에 transform을 활용해서 애니메이션 구현</li>
           </ul>
         </div>
         <div>
           <h2>landingPage.html</h2>
           <ul>
             <li>스크롤 시 opacity를 바꾸어 자연스럽게 연출</li>
+            <li>우측에 버튼을 클릭하여 해당 위치로 스크롤</li>
             <li>이용 방법은 캐러셀을 만들어서 이미지로 설명함</li>
           </ul>
         </div>
@@ -87,6 +90,10 @@
           <h2>toDoList.html</h2>
           <ul>
             <li>localStorage를 활용해서 페이지를 나가도 할 일이 로컬에 저장됨</li>
+            <li>할 일 추가 시 내용, id, 완료 여부를 localStorage에 저장</li>
+            <li>완료하면 할 일에 취소선이 생기고 회색으로 변경</li>
+            <li>할 일 hover 시 수정, 삭제 아이콘 띄우기</li>
+            <li>전체 삭제 시 localStorage 비우기</li>
           </ul>
         </div>
       </div>
@@ -105,7 +112,7 @@
     const slideContents = document.querySelectorAll('.slide-content');
     const slideDots = document.getElementsByClassName('slidedot');
     let cnt = 0;
-    slideDots[0].classList.add('active');
+
     // dot 스타일 변경
     function slideDotStyle() {
       for (let i = 0; i < slideContents.length; i++) {
@@ -120,7 +127,8 @@
     // dot 클릭했을 때 이미지 변환
     function handleSlide() {
       const dot = event.target;
-      const activeDots = document.getElementsByClassName('active');
+      const slideDots = document.querySelector('.slide-dots');
+      const activeDots = slideDots.getElementsByClassName('active');
       activeDots[0].classList.remove('active');
       dot.classList.add('active');
 
@@ -192,7 +200,8 @@
     //화면 우측 버튼 클릭 시 해당 위치로 스크롤
     function handleClick(event) {
       const dot = event.target;
-      const activeDots = document.getElementsByClassName('active');
+      const slickDots = document.querySelector('.slick-dots');
+      const activeDots = slickDots.getElementsByClassName('active');
       activeDots[0].classList.remove('active');
       dot.classList.add('active');
 
