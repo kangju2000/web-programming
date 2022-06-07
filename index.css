@@ -71,6 +71,7 @@ iframe {
 #side_bar>a {
   display: block;
   padding: 10px;
+  border-bottom: 2px solid #fff;
   cursor: pointer;
 }
 

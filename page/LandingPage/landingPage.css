@@ -17,7 +17,7 @@ body {
 
 .card-box {
   position: sticky;
-  top: 150px;
+  top: 130px;
   height: 0px;
   opacity: 0;
   transition: all 0.3s;
@@ -27,7 +27,7 @@ body {
   position: relative;
   width: 700px;
   height: 470px;
-  border: 3px solid black;
+  /* border: 3px solid #aaa; */
   border-radius: 5px;
   overflow: hidden;
 }
@@ -36,6 +36,54 @@ body {
   border: none;
   background-color: inherit;
   font-size: 30px;
+}
+
+.top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-left: 3px solid #aaa;
+  border-top: 3px solid #aaa;
+  border-radius: 5px 0px;
+  z-index: 9;
+}
+
+.top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-top: 3px solid #aaa;
+  border-right: 3px solid #aaa;
+  border-radius: 0px 5px;
+  z-index: 9;
+}
+
+.bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-left: 3px solid #aaa;
+  border-bottom: 3px solid #aaa;
+  border-radius: 0px 5px;
+  z-index: 9;
+}
+
+.bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-right: 3px solid #aaa;
+  border-bottom: 3px solid #aaa;
+  border-radius: 5px 0px;
+  z-index: 9;
 }
 
 .slide-list {
@@ -52,7 +100,7 @@ body {
 .slide-content img {
   width: 700px;
   height: 400px;
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid #aaa;
 }
 
 .slick-dots {
