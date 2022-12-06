@@ -1,94 +1,95 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./img/checklist.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="index.css" />
+    <title>TO DO LIST</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="./img/checklist.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-  <link rel="stylesheet" href="global.css">
-  <link rel="stylesheet" href="index.css">
-  <title>TO DO LIST</title>
-</head>
+  <body>
+    <!-- 상단 바 -->
+    <header>
+      <button type="button" class="menu-btn" onclick="navToggle()">
+        <i id="menu_icon" class="fa-solid fa-bars"></i>
+      </button>
+      <h1>
+        <a href="page/LandingPage/landingPage.html" target="main-frame" onclick="navClose()"
+          >TO DO LIST</a
+        >
+      </h1>
+    </header>
 
-<body>
-  <!-- 상단 바 -->
-  <header>
-    <button type="button" class="menu-btn" onclick="navToggle()">
-      <i id="menu_icon" class="fa-solid fa-bars"></i>
-    </button>
-    <h1>
-      <a href="page/LandingPage/landingPage.html" target="main-frame" onclick="navClose()">TO DO LIST</a>
-    </h1>
-  </header>
-
-  <!-- 사이드 바 -->
-  <aside id="side_bar">
-    <a href="page/LandingPage/landingPage.html" target="main-frame" onclick="navClose()">홈</a>
-    <a href="page/ToDoList/toDoList.html" target="main-frame" onclick="navClose()">투두 리스트</a>
-    <!-- <a href="https://board-app-with-react.herokuapp.com/" target="_blank"
+    <!-- 사이드 바 -->
+    <aside id="side_bar">
+      <a href="page/LandingPage/index.html" target="main-frame" onclick="navClose()">홈</a>
+      <a href="page/ToDoList/index.html" target="main-frame" onclick="navClose()">투두 리스트</a>
+      <!-- <a href="https://board-app-with-react.herokuapp.com/" target="_blank"
       onclick="return confirm('게시판 사이트로 이동하시겠습니까?')">
       게시판 <i class=" fa-solid fa-link"></i>
     </a> -->
-  </aside>
+    </aside>
 
-  <!-- 메인 컨텐츠 -->
-  <div class="contents">
-    <section>
-      <iframe id="frame" name="main-frame" src="page/landingPage/landingPage.html"></iframe>
-    </section>
-  </div>
-
-  <!-- 다크 모드 -->
-  <footer>
-    <div id="toggle">
-      <button type="button" id="dark_mode" onclick="darkModeToggle(this)">
-        <i class="fa-solid fa-toggle-off"></i>
-      </button>
+    <!-- 메인 컨텐츠 -->
+    <div class="contents">
+      <section>
+        <iframe id="frame" name="main-frame" src="page/landingPage/index.html"></iframe>
+      </section>
     </div>
-  </footer>
 
-  <script>
-    // 왼쪽 상단 사이드 바
-    const sideBar = document.getElementById("side_bar");
-    const menuIcon = document.getElementById("menu_icon");
-    let isNavOpened = false;
+    <!-- 다크 모드 -->
+    <footer>
+      <div id="toggle">
+        <button type="button" id="dark_mode" onclick="darkModeToggle(this)">
+          <i class="fa-solid fa-toggle-off"></i>
+        </button>
+      </div>
+    </footer>
 
-    function navClose() {
-      sideBar.style.transform = "translateY(-150px)";
-      menuIcon.style.transform = "rotate(0deg)";
-      isNavOpened = false;
-    }
-    function navToggle() {
-      if (isNavOpened == false) {
-        sideBar.style.transform = "translateY(0px)";
-        menuIcon.style.transform = "rotate(90deg)";
-        isNavOpened = true;
+    <script>
+      // 왼쪽 상단 사이드 바
+      const sideBar = document.getElementById('side_bar');
+      const menuIcon = document.getElementById('menu_icon');
+      let isNavOpened = false;
+
+      function navClose() {
+        sideBar.style.transform = 'translateY(-150px)';
+        menuIcon.style.transform = 'rotate(0deg)';
+        isNavOpened = false;
       }
-      else {
-        navClose();
+      function navToggle() {
+        if (isNavOpened == false) {
+          sideBar.style.transform = 'translateY(0px)';
+          menuIcon.style.transform = 'rotate(90deg)';
+          isNavOpened = true;
+        } else {
+          navClose();
+        }
       }
-    }
-  </script>
+    </script>
 
-  <script>
-    // 다크 모드
-    let isDarkMode = false;
+    <script>
+      // 다크 모드
+      let isDarkMode = false;
 
-    function darkModeToggle(obj) {
-      if (isDarkMode == false) {
-        obj.innerHTML = '<i class="fa-solid fa-toggle-on"></i>';
-        document.body.style.filter = 'invert(80%)';
-        isDarkMode = true;
+      function darkModeToggle(obj) {
+        if (isDarkMode == false) {
+          obj.innerHTML = '<i class="fa-solid fa-toggle-on"></i>';
+          document.body.style.filter = 'invert(80%)';
+          isDarkMode = true;
+        } else {
+          obj.innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
+          document.body.style.filter = 'invert(0%)';
+          isDarkMode = false;
+        }
       }
-      else {
-        obj.innerHTML = '<i class="fa-solid fa-toggle-off"></i>';
-        document.body.style.filter = 'invert(0%)';
-        isDarkMode = false;
-      }
-    }
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
